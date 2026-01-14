@@ -5,7 +5,7 @@ function App() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // REPLACE THIS URL with your live Render URL
+  // Your Live Render URL
   const API_URL = "https://legacy-bridge-dashboard-1.onrender.com/api/products";
 
   useEffect(() => {
@@ -21,38 +21,49 @@ function App() {
   }, []);
 
   return (
-    <div style={{ padding: '40px', backgroundColor: '#f4f7f6', minHeight: '100vh', fontFamily: 'sans-serif' }}>
+    <div style={{ padding: '20px', backgroundColor: '#f4f7f6', minHeight: '100vh', fontFamily: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' }}>
       <header style={{ marginBottom: '30px', textAlign: 'center' }}>
-        <h1 style={{ color: '#2c3e50', margin: '0' }}>Inventory Management System</h1>
-        <p style={{ color: '#7f8c8d' }}>Live Cloud Demo | React + FastAPI</p>
+        <h1 style={{ color: '#2c3e50', margin: '0', fontSize: '1.8rem' }}>Inventory Management System</h1>
+        <p style={{ color: '#7f8c8d', fontSize: '0.9rem' }}>Live Cloud Demo | React + FastAPI</p>
       </header>
 
-      <div style={{ maxWidth: '900px', margin: '0 auto', backgroundColor: 'white', borderRadius: '12px', boxShadow: '0 10px 25px rgba(0,0,0,0.1)', overflow: 'hidden' }}>
+      <div style={{ 
+        maxWidth: '900px', 
+        margin: '0 auto', 
+        backgroundColor: 'white', 
+        borderRadius: '12px', 
+        boxShadow: '0 10px 25px rgba(0,0,0,0.1)', 
+        overflow: 'hidden' 
+      }}>
         {loading ? (
           <div style={{ padding: '40px', textAlign: 'center' }}>Loading Inventory Data...</div>
         ) : (
-          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-            <thead style={{ backgroundColor: '#34495e', color: 'white' }}>
-              <tr>
-                <th style={{ padding: '15px', textAlign: 'left' }}>Product Name</th>
-                <th style={{ padding: '15px', textAlign: 'left' }}>Category</th>
-                <th style={{ padding: '15px', textAlign: 'center' }}>Stock</th>
-                <th style={{ padding: '15px', textAlign: 'right' }}>Price (NGN)</th>
-              </tr>
-            </thead>
-            <tbody>
-              {products.map(item => (
-                <tr key={item.id} style={{ borderBottom: '1px solid #eee' }}>
-                  <td style={{ padding: '15px' }}>{item.name}</td>
-                  <td style={{ padding: '15px' }}>{item.category}</td>
-                  <td style={{ padding: '15px', textAlign: 'center' }}>{item.quantity}</td>
-                  <td style={{ padding: '15px', textAlign: 'right', fontWeight: 'bold', color: '#27ae60' }}>
-                    ₦{item.price.toLocaleString()}
-                  </td>
+          /* RESPONSIVE WRAPPER START: This ensures the price shows on mobile */
+          <div style={{ width: '100%', overflowX: 'auto' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '500px' }}>
+              <thead style={{ backgroundColor: '#34495e', color: 'white' }}>
+                <tr>
+                  <th style={{ padding: '12px 15px', textAlign: 'left' }}>Product Name</th>
+                  <th style={{ padding: '12px 15px', textAlign: 'left' }}>Category</th>
+                  <th style={{ padding: '12px 15px', textAlign: 'center' }}>Stock</th>
+                  <th style={{ padding: '12px 15px', textAlign: 'right' }}>Price (NGN)</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {products.map(item => (
+                  <tr key={item.id} style={{ borderBottom: '1px solid #eee' }}>
+                    <td style={{ padding: '12px 15px', color: '#2c3e50' }}>{item.name}</td>
+                    <td style={{ padding: '12px 15px', color: '#7f8c8d', fontSize: '0.85rem' }}>{item.category}</td>
+                    <td style={{ padding: '12px 15px', textAlign: 'center' }}>{item.quantity}</td>
+                    <td style={{ padding: '12px 15px', textAlign: 'right', fontWeight: 'bold', color: '#27ae60' }}>
+                      ₦{item.price ? item.price.toLocaleString() : "0"}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          /* RESPONSIVE WRAPPER END */
         )}
       </div>
       
