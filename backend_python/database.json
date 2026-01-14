@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Laptops",
+    "quantity": 15,
+    "price": 450000.00,
+    "category": "Electronics"
+  },
+  {
+    "id": 2,
+    "name": "Office Chairs",
+    "quantity": 50,
+    "price": 25000.00,
+    "category": "Furniture"
+  },
+  {
+    "id": 3,
+    "name": "External Hard Drive",
+    "quantity": 30,
+    "price": 45000.00,
+    "category": "Accessories"
+  }
+]
