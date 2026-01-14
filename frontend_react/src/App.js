@@ -6,7 +6,7 @@ function App() {
 
   useEffect(() => {
     // Fetch data from your Python Backend
-    axios.get('http://localhost:8000/api/products')
+    axios.get('https://preeducationally-unsooty-vickie.ngrok-free.dev/api/products')
       .then(res => setProducts(res.data))
       .catch(err => console.error("Connection Error:", err));
   }, []);
